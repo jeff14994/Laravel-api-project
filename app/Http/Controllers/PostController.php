@@ -26,7 +26,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //creat a post
+        //create a post
+        return Post::create($request->all());
     }
 
     /**
@@ -38,6 +39,7 @@ class PostController extends Controller
     public function show($id)
     {
         //show a post
+        return Post::find($id);
     }
 
     /**
@@ -50,6 +52,10 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //update a post
+        $post = Post::find($id);
+        $post->update($request->all());
+        return $post;
+
     }
 
     /**
@@ -61,5 +67,6 @@ class PostController extends Controller
     public function destroy($id)
     {
         //delete a post
+        return Post::destroy($id);
     }
 }
