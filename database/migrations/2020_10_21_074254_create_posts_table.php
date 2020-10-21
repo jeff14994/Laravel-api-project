@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
+            $table->string('likes')->default(0);
             $table->string('content')->nullable();
             $table->timestamps();
         });
