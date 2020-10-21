@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Post;
+use App\Http\Controllers\PostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,9 @@ use App\Models\Post;
 |
 */
  //Get the api from http://127.0.0.1:8000/api/testing-the-api
-Route::get('/testing-the-api', function(){
-    return ['message' => 'hello'];
-});
+// Route::get('/testing-the-api', function(){
+//     return ['message' => 'hello'];
+// });
 
 //posts
 //CRUD is basically
@@ -27,13 +28,9 @@ Route::get('/testing-the-api', function(){
 //4. update a single (PUT/PATCH) /api/posts/{id}
 //5. delete (DELETE) /api/posts/{id}
 
-Route::get('/posts', function(){
-    $post = Post::create([
-        'title' => 'my first post', 
-        'slug' => 'my-first-post'
-    ]);
-    return $post;
-});
+
+// Route::get('/posts', 'App\Http\Controllers\PostController@index');
+Route::resource('posts', 'App\Http\Controllers\PostController@index');
 // to create a resource (posts) in laravel
 //1. create the database and migrations
 //2. create a model
