@@ -30,7 +30,12 @@ use App\Http\Controllers\PostController;
 
 
 // Route::get('/posts', 'App\Http\Controllers\PostController@index');
-Route::resource('posts', 'App\Http\Controllers\PostController');
+
+//api version controlling
+Route::prefix('v1')->group(function(){
+    Route::resource('posts', 'App\Http\Controllers\PostController');
+});
+
 // to create a resource (posts) in laravel
 //1. create the database and migrations
 //2. create a model
